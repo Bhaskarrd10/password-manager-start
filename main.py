@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
-from random import choice, randint, shuffle 
+from random import choice, randint, shuffle
+import pyperclip
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -25,6 +26,7 @@ def generate_password():
 
     password = "".join(password_list)
     password_entry.insert(0, password)
+    pyperclip.copy(password)
     #password = ""
     #for char in password_list:
     #  password += char
@@ -46,7 +48,6 @@ def save():
                                f"\n password: {password} \n Is it ok to save?")
 
         if is_ok:
-
             with open("data.text", "a") as data_file:
                 data_file.write(f"{website} | {email} | {password }\n")
                 website_entry.delete(0, END)
